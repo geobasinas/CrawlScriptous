@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Page URL Crawler</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Web Page URL Crawler</h1>
-        <form id="crawlerForm">
-            <label for="urlInput">Enter URL to crawl:</label>
-            <input type="url" id="urlInput" required placeholder="https://example.com">
-            <button type="submit">Crawl</button>
+    <div class="container mt-5">
+        <h1 class="text-center">Web Page URL Crawler</h1>
+        <form id="crawlerForm" class="mt-4">
+            <div class="form-group">
+                <label for="urlInput">Enter URL to crawl:</label>
+                <input type="url" id="urlInput" class="form-control" required placeholder="https://example.com">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Crawl</button>
         </form>
-        <div id="results">
+        <div id="results" class="mt-4">
             <h2>Results:</h2>
             <p id="status"></p>
-            <ul id="linksList"></ul>
+            <ul id="linksList" class="list-group"></ul>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cheerio/1.0.0-rc.12/cheerio.min.js"></script>

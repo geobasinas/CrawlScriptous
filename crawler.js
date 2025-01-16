@@ -14,7 +14,6 @@ async function crawlUrl(url) {
     // Validate URL
     new URL(url);
 
-    console.log(`Crawling: ${url}`);
     const response = await fetch(url, { headers });
     const html = await response.text();
 
@@ -34,18 +33,13 @@ async function crawlUrl(url) {
       }
     });
 
-    console.log(`Found ${links.size} unique links:`);
-    links.forEach(link => console.log(link));
+    return links;
 
   } catch (error) {
     if (error instanceof TypeError && error.message.includes('Invalid URL')) {
-      console.error('Error: Invalid URL provided. Please make sure to include the protocol (http:// or https://).');
+      throw new Error('Error: Invalid URL provided. Please make sure to include the protocol (http:// or https://).');
     } else {
-      console.error('An error occurred:', error.message);
+      throw new Error(`An error occurred: ${error.message}`);
     }
   }
 }
-
-// Example usage
-const targetUrl = 'https://comick.io/comic/a-tale-of-the-two-tigers';
-crawlUrl(targetUrl);
