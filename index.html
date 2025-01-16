@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Page URL Crawler</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Web Page URL Crawler</h1>
+        <form id="crawlerForm">
+            <label for="urlInput">Enter URL to crawl:</label>
+            <input type="url" id="urlInput" required placeholder="https://example.com">
+            <button type="submit">Crawl</button>
+        </form>
+        <div id="results">
+            <h2>Results:</h2>
+            <p id="status"></p>
+            <ul id="linksList"></ul>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cheerio/1.0.0-rc.12/cheerio.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
