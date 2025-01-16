@@ -49,4 +49,3 @@ async function crawlUrl(url) {
 // Example usage
 const targetUrl = 'https://comick.io/comic/a-tale-of-the-two-tigers';
 crawlUrl(targetUrl);
-
