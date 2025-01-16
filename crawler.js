@@ -1,4 +1,9 @@
+import express from 'express';
 import cheerio from 'cheerio';
+import fetch from 'node-fetch';
+
+const app = express();
+const port = 3000;
 
 // Custom headers to mimic a regular browser
 const headers = {
@@ -37,15 +42,26 @@ async function crawlUrl(url) {
     console.log(`Found ${links.size} unique links:`);
     links.forEach(link => console.log(link));
 
+    return Array.from(links);
+
   } catch (error) {
     if (error instanceof TypeError && error.message.includes('Invalid URL')) {
       console.error('Error: Invalid URL provided. Please make sure to include the protocol (http:// or https://).');
     } else {
       console.error('An error occurred:', error.message);
     }
+    return [];
   }
 }
 
-// Example usage
-const targetUrl = 'https://comick.io/comic/a-tale-of-the-two-tigers';
-crawlUrl(targetUrl);
+app.use(express.json());
+
+app.post('/api/crawl', async (req, res) => {
+  const { url } = req.body;
+  const links = await crawlUrl(url);
+  res.json({ links });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
